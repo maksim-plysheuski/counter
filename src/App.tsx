@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './App.css';
 import {Monitor} from "./Monitor/Monitor";
-import {IncButton} from "./IncButton/IncButton";
+import {IncrementButton} from "./IncButton/IncrementButton";
 import {ResetButton} from "./ResetButton/ResetButton";
 
 function App() {
@@ -21,8 +21,13 @@ function App() {
       <div className="MyApp">
           <Monitor counter={counter}/>
         <div className="Buttons">
-          <IncButton addValue={addValue} counter={counter}/>
-          <ResetButton resetValue={resetValue} counter={counter} />
+          <span className="AddValueButton">
+            <IncrementButton addValue={addValue} counter={counter}/>
+          </span>
+          <span className="ResetButton">
+            <ResetButton resetValue={resetValue} counter={counter} />
+          </span>
+
         </div>
       </div>
 

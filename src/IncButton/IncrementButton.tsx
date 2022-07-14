@@ -6,10 +6,10 @@ type IncButtonPropsType = {
     counter: number
 }
 
-export const IncButton = (props: IncButtonPropsType) => {
+export const IncrementButton = (props: IncButtonPropsType) => {
     const buttonClass = props.counter === 5 ? "red" : ''
 
     return(
-        <button className={buttonClass}  disabled={props.counter >= 5} onClick={props.addValue}>inc</button>
+        <button className={buttonClass}  disabled={props.counter >= 5} onClick={props.addValue}>Increment</button>
     )
 }

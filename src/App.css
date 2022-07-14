@@ -1,15 +1,28 @@
-.redValue {
-  background-color: rgba(255,10,0,0.21);
-  border-radius: 4px;
-  border: gold;
 
+
+.MyApp {
+  border: 1px solid beige;
+  border-radius: 5%;
+  padding: 15px;
 }
-.red {
-  background-color: rgba(255,10,0,0.21)
+
+.Monitor {
+  color: white;
+  background-color: #4a67a1;
+  border-radius: 4px;
 }
-.reset {
-  background-color: rgba(255,10,0,0.21)
+
+button {
+  padding: 5px;
+  margin: 10px;
+  text-transform: uppercase;
+  font-weight: lighter;
+  color: white;
+  background-color: #4a67a1;
+  border: 1px solid white;
+  border-radius: 4px;
 }
+
 
 .App {
   text-align: center;
@@ -22,8 +35,21 @@
   font-size: calc(50px + 3vmin);
   color: white;
   height: 40vmin;
+}
+
+.redValue {
+  background-color: rgba(255,10,0,0.21);
+
 
 }
+.red {
+  background-color: rgba(255,10,0,0.21);
+}
+.reset {
+  background-color: rgba(255,10,0,0.21);
+}
+
+
 
 
 

@@ -6,9 +6,8 @@ type MonitorPropsType = {
 }
 
 export const Monitor = (props: MonitorPropsType) => {
-    const monitorClass = props.counter >= 5 ? "redValue Monitor" : 'Monitor';
-    return <div className={monitorClass}>{props.counter}
-    <div>{props.counter === 5 ? "Хватить сюда жать" : ""}</div>
+
+    return <div className="Monitor">{props.counter}
     </div>
 
 }
