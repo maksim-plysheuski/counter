@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from "react";
 import './App.css';
+import {Monitor} from "./Monitor/Monitor";
+import {IncButton} from "./IncButton/IncButton";
+import {ResetButton} from "./ResetButton/ResetButton";
 
 function App() {
+
+  const [counter, setCounter] = useState<number>(0)
+
+  const addValue = () => {
+    setCounter(counter + 1)
+  }
+
+  const resetValue = () => {
+    setCounter(0)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="MyApp">
+          <Monitor counter={counter}/>
+        <div className="Buttons">
+          <IncButton addValue={addValue} counter={counter}/>
+          <ResetButton resetValue={resetValue} counter={counter} />
+        </div>
+      </div>
+
     </div>
   );
 }
