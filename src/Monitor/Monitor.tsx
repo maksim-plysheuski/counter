@@ -9,6 +9,5 @@ export const Monitor = (props: MonitorPropsType) => {
 
     return <div className="Monitor">{props.counter}
     </div>
-
 }
 
