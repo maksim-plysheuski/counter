@@ -2,13 +2,13 @@ import React, {useState} from "react";
 import './App.css';
 
 import {CounterWindow} from "./components/CounterWindow/CounterWindow";
+import {SettingsWindow} from "./components/SettingsWindow/SettingsWindow";
 
 function App() {
 
   const [counterValue, setCounterValue] = useState<number>(0)
 
-  const minValue = 0;
-  const maxValue = 0;
+  const minMaxValues = []
 
 
   const addValue = () => {
@@ -25,7 +25,10 @@ function App() {
           counterValue={counterValue}
           resetValueCallback={resetValue}
           addValueCallBack={addValue} />
-
+      <SettingsWindow
+          counterValue={counterValue}
+          resetValueCallback={resetValue}
+          addValueCallBack={addValue} />
     </div>
   );
 }

@@ -1,30 +1,24 @@
-import {Monitor} from "../Monitor/Monitor";
 import {Button} from "../UniversalButton/UniversalButton";
 import React from "react";
-import '../../App.css';
+import "../../App.css";
+import {SettingsMonitor} from "./SettingsMonitor";
 
-type CounterWindowType = {
+type PropsType = {
     counterValue: number,
     resetValueCallback: () => void
     addValueCallBack: () => void
 }
 
 
-export const CounterWindow = (props: CounterWindowType) => {
+export const SettingsWindow = (props: PropsType) => {
 
 
     return (
         <div className="MyApp">
-            <Monitor counter={props.counterValue}/>
-            <div className="Buttons">
-          <span className="AddValueButton">
-            <Button name={'increment'} counterValue={props.counterValue} callBack={props.addValueCallBack}/>
-          </span>
-                <span className="ResetButton">
-            <Button name={"reset"} counterValue={props.counterValue} callBack={props.resetValueCallback}/>
-          </span>
+            <SettingsMonitor counter={props.counterValue}/>
 
-            </div>
+            <Button name={"set"} counterValue={props.counterValue} callBack={props.addValueCallBack}/>
+
         </div>
     )
 }

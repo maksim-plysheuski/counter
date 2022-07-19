@@ -5,7 +5,7 @@ type MonitorPropsType = {
     counter: number
 }
 
-export const Monitor = (props: MonitorPropsType) => {
+export const CounterMinitor = (props: MonitorPropsType) => {
 
     return <div className="Monitor">{props.counter}
     </div>

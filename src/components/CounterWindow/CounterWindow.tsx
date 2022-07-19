@@ -1,4 +1,4 @@
-import {Monitor} from "../Monitor/Monitor";
+import {CounterMinitor} from "./CounterMonitor";
 import {Button} from "../UniversalButton/UniversalButton";
 import React from "react";
 import '../../App.css';
@@ -15,7 +15,7 @@ export const CounterWindow = (props: CounterWindowType) => {
 
     return (
         <div className="MyApp">
-            <Monitor counter={props.counterValue}/>
+            <CounterMinitor counter={props.counterValue}/>
             <div className="Buttons">
           <span className="AddValueButton">
             <Button name={'increment'} counterValue={props.counterValue} callBack={props.addValueCallBack}/>

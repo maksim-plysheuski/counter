@@ -1,3 +1,4 @@
+import {useState} from "react";
 
 type PropsType = {
     name: string
@@ -6,6 +7,8 @@ type PropsType = {
 }
 
 export const Button = (props: PropsType) => {
+    const [isDisabled, setDisabled] = useState<boolean>(false)
+
     const onClickHandler = () => {
         props.callBack()
     }
