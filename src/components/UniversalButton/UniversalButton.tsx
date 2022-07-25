@@ -1,18 +1,20 @@
-import {useState} from "react";
-
 type PropsType = {
     name: string
-    counterValue: number
+    counterValue: number | string
     callBack: () => void
+    settingsValues: Array<number>
+    isDisabled: boolean
 }
 
 export const Button = (props: PropsType) => {
-    const [isDisabled, setDisabled] = useState<boolean>(false)
+
 
     const onClickHandler = () => {
         props.callBack()
     }
-    const buttonClass = props.counterValue === 5 || props.counterValue === 0 ? "redButton" : ""
 
-    return <button className={buttonClass} onClick={onClickHandler}>{props.name}</button>
+
+    return <button disabled={props.isDisabled}
+                   className={props.isDisabled ? "error" : ''}
+                   onClick={onClickHandler}>{props.name}</button>
 }

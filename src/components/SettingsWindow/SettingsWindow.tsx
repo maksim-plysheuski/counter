@@ -5,19 +5,31 @@ import {SettingsMonitor} from "./SettingsMonitor";
 
 type PropsType = {
     counterValue: number,
-    resetValueCallback: () => void
-    addValueCallBack: () => void
+    changeInputValuesCallback: (minValue: number, maxValue: number) => void
+    settingsValues: Array<number>
+    setSettings: () => void
+
 }
 
 
 export const SettingsWindow = (props: PropsType) => {
 
+    const buttonCallback = () => {
+        props.setSettings()
+    }
+
+
+
 
     return (
-        <div className="MyApp">
-            <SettingsMonitor counter={props.counterValue}/>
+        <div className="SettingsWindow">
+            <SettingsMonitor
+                counter={props.counterValue}
+                settingsValues={props.settingsValues}
+                changeValuesCallback={props.changeInputValuesCallback}
+            />
 
-            <Button name={"set"} counterValue={props.counterValue} callBack={props.addValueCallBack}/>
+            <Button name={"set"} counterValue={props.counterValue} callBack={buttonCallback} settingsValues={props.settingsValues} isDisabled={true}/>
 
         </div>
     )

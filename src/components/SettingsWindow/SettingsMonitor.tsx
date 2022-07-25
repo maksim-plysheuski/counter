@@ -1,30 +1,35 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent} from "react";
 import "../../App.css";
 
 type MonitorPropsType = {
-    counter: number
+    counter: number | string
+    settingsValues: Array<number>
+    changeValuesCallback: (minValue: number, maxValue: number) => void
 }
 
 export const SettingsMonitor = (props: MonitorPropsType) => {
-    let minValue = 0;
-    let maxValue = 0;
+
 
     const minValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        minValue = Number(e.currentTarget.value)
+
+        let newValue = Number(e.currentTarget.value)
+        props.changeValuesCallback(newValue, props.settingsValues[1])
     }
 
     const maxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        maxValue = Number(e.currentTarget.value)
+
+        let newValue = Number(e.currentTarget.value)
+        props.changeValuesCallback(props.settingsValues[0], newValue)
     }
 
 
     return (
         <div className="SettingsMonitor">
             <div>
-                min value<input type={"number"} onChange={minValueHandler}/>
+                start value<input value={props.settingsValues[0]} type={"number"} onChange={minValueHandler}/>
             </div>
             <div>
-                max value<input type={"number"} onChange={maxValueHandler}/>
+                max value<input value={props.settingsValues[1]} type={"number"} onChange={maxValueHandler}/>
             </div>
         </div>
     )

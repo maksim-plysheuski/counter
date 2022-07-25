@@ -1,13 +1,23 @@
-import React from 'react';
-import '../../App.css';
+import React from "react";
+import "../../App.css";
 
 type MonitorPropsType = {
-    counter: number
+    counter: number | string
+    settingsValues: Array<number>
+    maxValueDisplayed: boolean
+    editSettingsMode: boolean
+    incorrectValues: boolean
 }
 
-export const CounterMinitor = (props: MonitorPropsType) => {
+export const CounterMonitor = (props: MonitorPropsType) => {
 
-    return <div className="Monitor">{props.counter}
-    </div>
+
+    return (
+        <div className={!props.maxValueDisplayed ? "CounterMonitor" : "CounterMonitorError"}>
+            {props.incorrectValues ? "enter correct values"
+                : props.editSettingsMode ? `enter values and press "set"`
+                    : props.counter}
+        </div>
+    )
 }
 
