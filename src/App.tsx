@@ -7,9 +7,16 @@ import {SettingsWindow} from "./components/SettingsWindow/SettingsWindow";
 function App() {
 
     const [counterValue, setCounterValue] = useState<number>(0)
-    const [settingsValues, setSettings] = useState<Array<number>>([0, 8])
+    const [settingsValues, setSettings] = useState<Array<number>>([0, 3])
     const [editSettingsMode, setEditSettingsMode] = useState<boolean>(false)
 
+    const min = settingsValues[0]
+    const max = settingsValues[1]
+
+    const isIncButtonDisabled = editSettingsMode || max <= 0 || min >= max || min < 0 || counterValue === max
+    const isResetButtonDisabled = editSettingsMode || counterValue === min
+    const isSetButtonDisabled = !editSettingsMode || max <= 0 || min >= max || min < 0
+    const correctValueError = editSettingsMode && isSetButtonDisabled
 
 
     /*useEffect(() => {
@@ -29,39 +36,44 @@ function App() {
         localStorage.setItem("max-value", JSON.stringify(settingsValues[1]))
     }, [settingsValues])*/
 
-
-
-    const addValue = () => {
+    const incrementValue = () => {
         setCounterValue(counterValue + 1)
     }
     const resetValue = () => {
         setCounterValue(0)
     }
+
+    const setSettingsValues = () => {
+        setCounterValue(settingsValues[0])
+        setEditSettingsMode(false)
+    }
+
     const changeInputValues = (minValue: number, maxValue: number) => {
         setSettings([minValue, maxValue])
         setEditSettingsMode(true)
-
     }
-    const setSettingsCallback = () => {
-        setCounterValue(Number(settingsValues[0]))
-    }
-
 
 
     return (
         <div className="App">
             <CounterWindow
                 counterValue={counterValue}
-                resetValueCallback={resetValue}
-                addValueCallBack={addValue}
                 settingsValues={settingsValues}
                 editSettingsMode={editSettingsMode}
+                isIncButtonDisabled={isIncButtonDisabled}
+                isResetButtonDisabled={isResetButtonDisabled}
+                correctValueError={correctValueError}
+                resetValueCallback={resetValue}
+                incrementValueCallBack={incrementValue}
+
             />
             <SettingsWindow
                 counterValue={counterValue}
-                changeInputValuesCallback={changeInputValues}
                 settingsValues={settingsValues}
-                setSettings={setSettingsCallback}
+                isSetButtonDisabled={isSetButtonDisabled}
+                correctValueError={correctValueError}
+                setSettingsValuesCallback={setSettingsValues}
+                changeInputValuesCallback={changeInputValues}
             />
         </div>
     );

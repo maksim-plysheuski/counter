@@ -13,8 +13,8 @@
 .CounterWindow {
   border: 1px solid white;
   border-radius: 15px;
-  height: 300px;
-  width: 400px;
+  height: 400px;
+  width: 500px;
   padding: 10px;
   margin: 15px;
 }
@@ -24,23 +24,24 @@
   background-color: #4a67a1;
   border-radius: 15px;
   border: 1px solid white;
-  font-size: 50px;
+  font-size: 40px;
   padding: 10px;
   margin: 20px;
-  height: 150px;
+  height: 250px;
   word-wrap: break-word;
   align-content: center;
 }
+
 
 .CounterMonitorError {
   background-color: #4a67a1;
   border-radius: 15px;
   border: 1px solid white;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   padding: 10px;
   margin: 20px;
-  height: 150px;
+  height: 250px;
   word-wrap: break-word;
   align-content: center;
   color: #6a0400;
@@ -49,14 +50,36 @@
 .SettingsWindow {
   border: 1px solid white;
   border-radius: 15px;
-  height: 300px;
-  width: 400px;
+  height: 400px;
+  width: 500px;
   padding: 10px;
+
 }
 
-input {
+
+.inp {
+  background-color: transparent;
   margin: 10px;
   padding: 5px;
+  border: 4px solid #282c34;
+  border-radius: 5px;
+  outline: none;
+  height: 25px;
+  width: 250px;
+  font-size: 25px;
+
+}
+
+.inpError {
+  background-color: transparent;
+  margin: 10px;
+  padding: 5px;
+  border: 4px solid #6a0400;
+  border-radius: 5px;
+  outline: none;
+  height: 25px;
+  width: 250px;
+  font-size: 25px;
 }
 
 .SettingsMonitor {
@@ -64,10 +87,10 @@ input {
   background-color: #4a67a1;
   border-radius: 15px;
   border: 1px solid white;
-  font-size: 25px;
+  font-size: 30px;
   padding: 10px;
   margin: 20px;
-  height: 150px;
+  height: 250px;
   word-wrap: break-word;
   align-content: center;
 }
@@ -93,8 +116,7 @@ button {
 
 .error {
   background-color: rgba(255,10,0,0.21);
-
-
+  opacity: 50%;
 }
 .redButton {
   background-color: rgba(255,10,0,0.21);
