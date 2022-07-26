@@ -9,7 +9,7 @@ type CounterWindowType = {
     editSettingsMode: boolean
     isIncButtonDisabled: boolean
     isResetButtonDisabled: boolean
-    correctValueError: boolean
+    incorrectValueError: boolean
     resetValueCallback: () => void
     incrementValueCallBack: () => void
 }
@@ -23,7 +23,7 @@ export const CounterWindow = (props: CounterWindowType) => {
             <CounterMonitor
                 counterValue={props.counterValue}
                 editSettingsMode={props.editSettingsMode}
-                correctValueError={props.correctValueError}
+                incorrectValueError={props.incorrectValueError}
                 settingsValues={props.settingsValues}
             />
             <div className="Buttons">

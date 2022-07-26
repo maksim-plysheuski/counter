@@ -9,7 +9,7 @@ type PropsType = {
     settingsValues: Array<number>
     setSettingsValuesCallback: () => void
     isSetButtonDisabled: boolean
-    correctValueError: boolean
+    incorrectValueError: boolean
 
 }
 
@@ -25,7 +25,7 @@ export const SettingsWindow = (props: PropsType) => {
             <SettingsMonitor
                 counterValue={props.counterValue}
                 settingsValues={props.settingsValues}
-                correctValueError={props.correctValueError}
+                incorrectValueError={props.incorrectValueError}
                 changeInputValuesCallback={props.changeInputValuesCallback}
             />
 

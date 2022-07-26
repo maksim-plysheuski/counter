@@ -7,19 +7,18 @@ import {SettingsWindow} from "./components/SettingsWindow/SettingsWindow";
 function App() {
 
     const [counterValue, setCounterValue] = useState<number>(0)
-    const [settingsValues, setSettings] = useState<Array<number>>([0, 3])
+    const [settingsValues, setSettings] = useState<Array<number>>([0, 5])
     const [editSettingsMode, setEditSettingsMode] = useState<boolean>(false)
 
-    const min = settingsValues[0]
-    const max = settingsValues[1]
+    const minValue = settingsValues[0]
+    const maxValue = settingsValues[1]
+    const isIncButtonDisabled = editSettingsMode || maxValue <= 0 || minValue >= maxValue || minValue < 0 || counterValue === maxValue
+    const isResetButtonDisabled = editSettingsMode || counterValue === minValue
+    const isSetButtonDisabled = !editSettingsMode || maxValue <= 0 || minValue >= maxValue || minValue < 0
+    const incorrectValueError = editSettingsMode && isSetButtonDisabled
 
-    const isIncButtonDisabled = editSettingsMode || max <= 0 || min >= max || min < 0 || counterValue === max
-    const isResetButtonDisabled = editSettingsMode || counterValue === min
-    const isSetButtonDisabled = !editSettingsMode || max <= 0 || min >= max || min < 0
-    const correctValueError = editSettingsMode && isSetButtonDisabled
 
-
-    /*useEffect(() => {
+    useEffect(() => {
         const minValue = localStorage.getItem("min-value")
         const maxValue = localStorage.getItem("max-value")
         if (minValue && maxValue) {
@@ -34,13 +33,15 @@ function App() {
     useEffect(() => {
         localStorage.setItem("min-value", JSON.stringify(settingsValues[0]))
         localStorage.setItem("max-value", JSON.stringify(settingsValues[1]))
-    }, [settingsValues])*/
+        localStorage.setItem("counter-value", JSON.stringify(counterValue))
+    }, [settingsValues])
+
 
     const incrementValue = () => {
         setCounterValue(counterValue + 1)
     }
     const resetValue = () => {
-        setCounterValue(0)
+        setCounterValue(settingsValues[0])
     }
 
     const setSettingsValues = () => {
@@ -62,16 +63,15 @@ function App() {
                 editSettingsMode={editSettingsMode}
                 isIncButtonDisabled={isIncButtonDisabled}
                 isResetButtonDisabled={isResetButtonDisabled}
-                correctValueError={correctValueError}
+                incorrectValueError={incorrectValueError}
                 resetValueCallback={resetValue}
                 incrementValueCallBack={incrementValue}
-
             />
             <SettingsWindow
                 counterValue={counterValue}
                 settingsValues={settingsValues}
                 isSetButtonDisabled={isSetButtonDisabled}
-                correctValueError={correctValueError}
+                incorrectValueError={incorrectValueError}
                 setSettingsValuesCallback={setSettingsValues}
                 changeInputValuesCallback={changeInputValues}
             />

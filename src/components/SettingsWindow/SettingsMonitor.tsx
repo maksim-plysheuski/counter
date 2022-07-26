@@ -4,11 +4,12 @@ import "../../App.css";
 type MonitorPropsType = {
     counterValue: number
     settingsValues: Array<number>
-    correctValueError: boolean
+    incorrectValueError: boolean
     changeInputValuesCallback: (minValue: number, maxValue: number) => void
 }
 
 export const SettingsMonitor = (props: MonitorPropsType) => {
+
 
     const minValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let newValue = Number(e.currentTarget.value)
@@ -25,11 +26,11 @@ export const SettingsMonitor = (props: MonitorPropsType) => {
         <div className="SettingsMonitor">
             <div>
                 start value<br/>
-                <input className={props.correctValueError ? "inpError" : "inp"} value={props.settingsValues[0]} type={"number"} onChange={minValueHandler}/>
+                <input className={props.incorrectValueError ? "inpError" : "inp"} value={props.settingsValues[0]} type={"number"} onChange={minValueHandler}/>
             </div>
             <div>
                 max value<br/>
-                <input className={props.correctValueError ? "inpError" : "inp"} value={props.settingsValues[1]} type={"number"} onChange={maxValueHandler}/>
+                <input className={props.incorrectValueError ? "inpError" : "inp"} value={props.settingsValues[1]} type={"number"} onChange={maxValueHandler}/>
             </div>
         </div>
     )
